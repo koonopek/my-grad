@@ -13,6 +13,8 @@ Thus we penalize to big weights which may lead to overfitting.
     * Example: `p(first_char, second_char) => probability that after first_char the next will be second_char` then we just iterative with function like this over data set and multiple probabilities.
     * However multiplying so many numbers (which are less then <0,1>) would let to very small number. Thus we `log` function to turn it into more friendly numbers, and from the property of log we can use sum instead of product. Because `log(a * b) = log(a) + log(b)`. And because log(<0,1>) < 0 we negate it
     * Name: `Maximum likelihood`
+  * `cross_entropy` is actually better because it also check if the high probability points to a proper class. `cross_entropy = -sum(y_actual[class] * log(y_pred[class]) for class in class_set)` `y_actual[class]` this will be =1 only for one class.
+    * In maximum likelihoods if model had all high probabilities then it would have low cost, beside it would be useless. With cross_entropy is not possible. 
 
 ### Tasks
 * E02: split up the dataset randomly into 80% train set, 10% dev set, 10% test set. Train the bigram and trigram models only on the training set. Evaluate them on dev and test splits. What can you see?
